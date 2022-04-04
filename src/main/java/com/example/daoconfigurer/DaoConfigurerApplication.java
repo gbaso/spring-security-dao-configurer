@@ -36,44 +36,44 @@ public class DaoConfigurerApplication {
 				.build();
 	}
 
-    @Bean
-    @SuppressWarnings("deprecation")
-    public static UserDetailsService userDetailsService() {
-        InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
-        manager.createUser(User.withDefaultPasswordEncoder().username("user").password("user").roles("USER").build());
-        return manager;
-    }
-
-    @Bean
-    public AuthenticationProvider firstProvider() {
-        return new AuthenticationProvider() {
-
-            @Override
-            public boolean supports(Class<?> authentication) {
-                return false;
-            }
-
-            @Override
-            public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-                return null;
-            }
-        };
-    }
+	@Bean
+	@SuppressWarnings("deprecation")
+	public static UserDetailsService userDetailsService() {
+		InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
+		manager.createUser(User.withDefaultPasswordEncoder().username("user").password("user").roles("USER").build());
+		return manager;
+	}
 
 	@Bean
-    public AuthenticationProvider secondProvider() {
-        return new AuthenticationProvider() {
+	public AuthenticationProvider firstProvider() {
+		return new AuthenticationProvider() {
 
-            @Override
-            public boolean supports(Class<?> authentication) {
-                return false;
-            }
+			@Override
+			public boolean supports(Class<?> authentication) {
+				return false;
+			}
 
-            @Override
-            public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-                return null;
-            }
-        };
-    }
+			@Override
+			public Authentication authenticate(Authentication authentication) throws AuthenticationException {
+				return null;
+			}
+		};
+	}
+
+	@Bean
+	public AuthenticationProvider secondProvider() {
+		return new AuthenticationProvider() {
+
+			@Override
+			public boolean supports(Class<?> authentication) {
+				return false;
+			}
+
+			@Override
+			public Authentication authenticate(Authentication authentication) throws AuthenticationException {
+				return null;
+			}
+		};
+	}
 
 }

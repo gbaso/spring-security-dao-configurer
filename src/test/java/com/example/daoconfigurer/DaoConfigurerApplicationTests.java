@@ -15,11 +15,13 @@ import org.springframework.test.web.servlet.MockMvc;
 class DaoConfigurerApplicationTests {
 
 	@Autowired
-    MockMvc mockMvc;
+	MockMvc mockMvc;
 
 	@Test
 	void daoAuthentication() throws Exception {
-		mockMvc.perform(get("/").with(httpBasic("user", "user"))).andExpect(status().isOk()).andExpect(content().string("Hello user!"));
+		mockMvc.perform(get("/").with(httpBasic("user", "user")))
+				.andExpect(status().isOk())
+				.andExpect(content().string("Hello user!"));
 	}
 
 }
