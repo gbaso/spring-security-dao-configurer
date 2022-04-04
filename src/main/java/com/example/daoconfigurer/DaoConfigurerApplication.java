@@ -33,6 +33,8 @@ public class DaoConfigurerApplication {
 		return http
 				.httpBasic(basic -> {})
 				.authorizeRequests(authorize -> authorize.anyRequest().authenticated())
+				.authenticationProvider(firstProvider())
+				.authenticationProvider(secondProvider())
 				.build();
 	}
 
@@ -44,7 +46,7 @@ public class DaoConfigurerApplication {
 		return manager;
 	}
 
-	@Bean
+	// @Bean
 	public AuthenticationProvider firstProvider() {
 		return new AuthenticationProvider() {
 
@@ -60,7 +62,7 @@ public class DaoConfigurerApplication {
 		};
 	}
 
-	@Bean
+	// @Bean
 	public AuthenticationProvider secondProvider() {
 		return new AuthenticationProvider() {
 
